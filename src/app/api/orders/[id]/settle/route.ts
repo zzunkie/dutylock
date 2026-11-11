@@ -122,6 +122,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/orders/[id]/set
   const form = await req.formData().catch(() => null);
   const quote = verifyQuote(String(form?.get("token") ?? ""));
   const file = form?.get("file");
+  const declaredTracking = String(form?.get("tracking") ?? "").trim();
   if (!quote || !(file instanceof File)) return Response.json({ error: "Quote and bill file are required." }, { status: 400 });
   if (file.size > 8_000_000) return Response.json({ error: "File is larger than 8 MB." }, { status: 400 });
   const mediaType = file.type || "application/pdf";
@@ -138,7 +139,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/orders/[id]/set
     if (!auth) return Response.json({ error: "No open authorization on this order (already captured, voided or expired)." }, { status: 409 });
 
     const bill = await readBill({ bytes: Buffer.from(await file.arrayBuffer()), mediaType });
-    const shipment = shipmentFor(id);
+    const shipment = shipmentFor(id) ?? (declaredTracking ? { carrier: "", tracking: declaredTracking } : undefined);
     const checks = check(bill, quote, shipment?.tracking);
     const blocked = checks.some((c) => !c.ok && c.level === "block");
 

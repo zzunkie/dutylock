@@ -140,6 +140,7 @@ function OrderSettlement({ order }: { order: LocalOrder }) {
     setError(null);
     const fd = new FormData();
     fd.set("token", order.token);
+    fd.set("tracking", tracking);
     fd.set("file", new File([bill.blob], bill.name, { type: bill.blob.type || "application/pdf" }));
     const res = await fetch(`/api/orders/${order.orderId}/settle?step=read`, { method: "POST", body: fd });
     const j = await res.json();

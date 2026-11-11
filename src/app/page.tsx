@@ -14,7 +14,7 @@ export default function Home() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
             A small seller in Leeds or Arita can’t know the final duty at checkout, because US customs picks the tariff code after the
-            parcel lands, and the rate can swing from 10% to 50%. DutyLock uses AI to find every code customs could apply, holds the highest
+            parcel lands, and the rate can swing from 10% to more than 50%. DutyLock uses AI to find every code customs could apply, holds the highest
             duty on the buyer’s PayPal, and captures only what customs actually charges.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -37,7 +37,7 @@ export default function Home() {
                 segments={[
                   { label: "Item + shipping", amount: 92, tone: "ink" },
                   { label: "Likely duty + fee", amount: 9.17, tone: "ink-soft" },
-                  { label: "Held in case customs reads it as copper", amount: 25.6, tone: "hold" },
+                  { label: "Held in case customs reads it as copper", amount: 27.52, tone: "hold" },
                 ]}
               />
             </div>
@@ -48,7 +48,7 @@ export default function Home() {
               <MoneyBar
                 segments={[
                   { label: "Captured", amount: 101.17, tone: "ink" },
-                  { label: "Released to the buyer", amount: 25.6, tone: "release" },
+                  { label: "Released to the buyer", amount: 27.52, tone: "release" },
                 ]}
               />
             </div>
@@ -61,7 +61,7 @@ export default function Home() {
         <div className="mt-8 grid gap-10 md:grid-cols-3">
           <Fact
             title="The code decides the rate"
-            body="The same celadon tea set is 26% if customs calls it porcelain sold in a set, 12.5% if it is stoneware. A brass candle holder is 10% as a lighting fitting and 50% as an article of copper under Section 232."
+            body="Espadrilles from Spain pay 10% if the rubber tread is under 10% of the shoe’s weight, and 37.5% if it is more. A brass candle holder pays 10% as a lighting fitting, and 53% as copper household ware under the Section 232 copper duty."
           />
           <Fact
             title="Customs decides the code"

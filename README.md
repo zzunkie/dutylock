@@ -12,12 +12,15 @@ The seller has to charge the buyer at checkout, but the amount is unknowable the
 
 | Product (demo shop) | If customs reads it as | Duty |
 |---|---|---|
-| Celadon tea set from Japan, $168 | stoneware tableware | 12.5% (Japan's Section 301 floor) |
-| | porcelain tableware sold in a set | up to 26% |
-| Brass candle holder from Portugal, $64 | non-electrical lighting fitting of brass (9405.50.30) | 10% (EU floor) |
-| | other article of copper (7419.80.50) | 50% (Section 232 copper) |
-| Waxed canvas weekender from the UK, $185 | bag with outer surface of leather | 4.5% + 10% |
-| | bag with outer surface of cotton textile | 6.3% + 10% |
+| Brass candle holder from Portugal, $64 | non-electrical lighting fitting of brass (9405.50.30) | 10% (EU floor under Section 301) |
+| | household article of copper (7418.10.00) | 53% (3% + Section 232 copper 50%) |
+| Espadrilles from Spain, $79 | rubber/plastics under 10% of the shoe's weight (6404.19.25) | 10% (EU floor) |
+| | rubber/plastics 10% or more (6404.19.39) | 37.5% |
+| Waxed canvas weekender from the UK, $185 | outer surface of cotton textile (4202.92.15) | 16.3% (6.3% + 10%) |
+| | outer surface of leather (4202.91.90) | 14.5% (4.5% + 10%) |
+| Celadon tea set from Japan, $168 | porcelain (6911.10.58) or stoneware (6912.00.45) | 12.5% either way (Japan floor) |
+
+These are the codes Claude returned for the demo listings (saved runs in `data/precomputed/`).
 
 Charge the low rate and the seller eats the difference. Charge a flat high rate and the buyer overpays or abandons the cart. Ship duties-unpaid and the buyer gets a surprise bill and often refuses the parcel.
 

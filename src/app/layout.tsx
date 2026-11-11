@@ -17,20 +17,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <header className="border-b border-line">
-          <nav className="mx-auto flex max-w-6xl items-center gap-8 px-5 py-4 text-sm">
+          <nav className="mx-auto flex max-w-6xl items-center gap-5 px-5 py-4 text-sm sm:gap-8">
             <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-base">
               <Logo />
               DutyLock
             </Link>
-            <div className="flex gap-6 text-muted">
+            <div className="flex gap-4 whitespace-nowrap text-muted sm:gap-6">
               <Link href="/shop" className="hover:text-ink">
-                Demo shop
+                <span className="sm:hidden">Shop</span>
+                <span className="hidden sm:inline">Demo shop</span>
               </Link>
               <Link href="/try" className="hover:text-ink">
-                Classify your product
+                <span className="sm:hidden">Classify</span>
+                <span className="hidden sm:inline">Classify your product</span>
               </Link>
               <Link href="/seller" className="hover:text-ink">
-                Seller console
+                <span className="sm:hidden">Seller</span>
+                <span className="hidden sm:inline">Seller console</span>
               </Link>
             </div>
             <span className="ml-auto hidden text-xs text-muted sm:block">PayPal sandbox · no real money</span>

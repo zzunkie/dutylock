@@ -25,6 +25,18 @@ export function ProductArt({ id, accent, className = "" }: { id: string; accent:
           <rect x="164" y="80" width="10" height="16" rx="2" fill="#c8a24a" />
         </g>
       )}
+      {id === "jute-espadrilles" && (
+        <g>
+          <ellipse cx="120" cy="132" rx="86" ry="6" fill="#00000010" />
+          <path d="M40 112 Q44 84 74 80 Q100 76 116 96 L118 116 Z" fill={accent} />
+          <rect x="36" y="112" width="84" height="14" rx="7" fill="#c9a66b" />
+          <path d="M40 119 H118" stroke="#a9874d" strokeWidth="2" strokeDasharray="3 3" />
+          <path d="M122 106 Q128 78 158 74 Q184 70 200 90 L202 110 Z" fill={accent} opacity="0.9" />
+          <rect x="120" y="106" width="86" height="14" rx="7" fill="#c9a66b" />
+          <path d="M124 113 H202" stroke="#a9874d" strokeWidth="2" strokeDasharray="3 3" />
+          <rect x="120" y="118" width="86" height="3" rx="1.5" fill="#3b3b3b" />
+        </g>
+      )}
       {id === "brass-candle-holder" && (
         <g>
           <ellipse cx="120" cy="134" rx="46" ry="6" fill="#00000010" />

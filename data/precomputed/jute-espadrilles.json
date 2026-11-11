@@ -1,0 +1,79 @@
+{
+  "steps": [
+    "Reading the listing",
+    "Read every line under 6404.19",
+    "Read every line under 6405.20",
+    "Checked 6404.19.25.30",
+    "Checked 6404.19.82.60",
+    "Checked 6404.19.30.60",
+    "Checked 6404.19.89",
+    "Checked 6404.19.25.60",
+    "Checked 6404.19.39.60",
+    "Checked 6404.19.36.60",
+    "Checked 6404.19.25.15",
+    "Checked 6405.20.30.60"
+  ],
+  "classification": {
+    "summary": "These are women's slip-on espadrilles with a cotton canvas upper and a braided jute sole. Under the footwear rules, the thin rubber tread counts as the outer sole because it covers most of the area that touches the ground. That puts them under \"textile upper, rubber outer sole\" footwear (6404.19). The duty then depends mainly on whether rubber and plastics make up less than 10% of the whole shoe's weight.",
+    "keyFacts": [
+      {
+        "fact": "Upper is 100% cotton canvas. Cotton is a vegetable fibre, so the shoe has a textile upper of vegetable fibres.",
+        "source": "listing"
+      },
+      {
+        "fact": "The sole is braided jute rope with a vulcanised rubber tread about 2 mm thick glued underneath, covering most of the ground-contact area. Chapter 64 Note 4(b) says the outer-sole material is the one with the most surface touching the ground, so here that is rubber.",
+        "source": "listing"
+      },
+      {
+        "fact": "Women's, closed toe, slip-on with no laces, buckles or fasteners. That means it is 'footwear of the slip-on type'.",
+        "source": "listing"
+      },
+      {
+        "fact": "Customs value is $79.00 for one pair, made in Spain.",
+        "source": "listing"
+      },
+      {
+        "fact": "There is no rubber or plastic foxing band (a strip around the shoe that overlaps the upper at the sole). Without one, the shoe stays in the slip-on group.",
+        "source": "assumption"
+      },
+      {
+        "fact": "The rubber and plastics weight (tread, glue and any other rubber parts) compared with the whole shoe's weight has not been stated. My rough estimate is close to 10%, maybe a little over: a 2 mm tread is about 35–45 g per shoe, and one shoe weighs about 250–300 g.",
+        "source": "assumption"
+      },
+      {
+        "fact": "The item is one pair.",
+        "source": "assumption"
+      }
+    ],
+    "candidates": [
+      {
+        "hts": "6404.19.25.60",
+        "role": "most_likely",
+        "likelihood": "medium",
+        "reasoning": "Under GRI 1 and Chapter 64 Note 4(b), the rubber tread covers most of the ground-contact area, so the outer sole is rubber and the upper is textile. That puts the shoe in heading 6404, subheading 6404.19 (not sports footwear). It is slip-on, with no foxing band and not protective footwear. If it is less than 10% rubber/plastics by weight with a vegetable-fibre (cotton) upper and is not a house slipper, it goes to 6404.19.25, women's, at 7.5%. US Customs often puts traditional jute-sole espadrilles with a thin rubber tread here because the heavy jute sole keeps the rubber share low.",
+        "decidingFact": "Rubber and plastics together make up less than 10% of the shoe's total weight."
+      },
+      {
+        "hts": "6404.19.39.60",
+        "role": "plausible_alternative",
+        "likelihood": "medium",
+        "reasoning": "The path is the same (rubber outer sole, textile upper, slip-on, no foxing), but if rubber/plastics are 10% or more of the weight the shoe falls under 'Other' in the slip-on group. The separate 7.5% line for textile-contact soles (6404.19.36) does not apply because rubber, not textile, has the most ground contact. That leaves 6404.19.39, women's, at 37.5%. A 2 mm vulcanised tread covering most of the sole could reach 10% of a light women's espadrille. This is the highest duty that could reasonably apply.",
+        "decidingFact": "Rubber and plastics make up 10% or more of the shoe's total weight."
+      },
+      {
+        "hts": "6405.20.30.60",
+        "role": "plausible_alternative",
+        "likelihood": "low",
+        "reasoning": "If a customs officer judged that the braided jute, not the rubber, has the most ground contact (for example, the tread is patchy or the jute edge also touches the ground), the outer sole would be textile. The shoe would then fall outside heading 6404, into 6405 ('Other footwear'), under textile uppers of vegetable fibres, women's, at 7.5%. The listing says the rubber covers most of the contact area, so this is unlikely.",
+        "decidingFact": "Jute rope, not rubber, has the greatest surface area in contact with the ground."
+      }
+    ],
+    "questionsForSeller": [
+      "Please weigh one shoe, then estimate or weigh the rubber tread plus glue. What percentage of the shoe's total weight is rubber or plastic?",
+      "Does the shoe have a rubber or plastic band (foxing) around the edge of the sole that overlaps the canvas upper, or does the rubber sit only on the bottom?",
+      "Does the rubber tread cover the whole bottom, or are there areas (heel, toe or edges) where the braided jute touches the ground?"
+    ],
+    "model": "claude-opus-5-5",
+    "classifiedAt": "2026-11-11T12:25:04.129Z"
+  }
+}

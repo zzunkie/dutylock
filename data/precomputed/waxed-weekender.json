@@ -1,0 +1,69 @@
+{
+  "steps": [
+    "Reading the listing",
+    "Read every line under 4202.92",
+    "Read every line under 4202.91",
+    "Checked 4202.92.08.05",
+    "Checked 4202.92.15.00",
+    "Checked 4202.92.33.16",
+    "Checked 4202.91.90.30",
+    "Checked 4202.92.10.00",
+    "Checked 4202.92.45.00"
+  ],
+  "classification": {
+    "summary": "For US customs, this is a travel bag (a weekender, heading 4202). Most of its outside (about 80%) is waxed cotton canvas and the rest is leather trim. A textile that has only been soaked in wax still counts as a textile, and the canvas is what gives the bag its main character. So customs should classify it as a travel bag with an outer surface of cotton textile that is not pile or tufted: 4202.92.15.00, at 6.3% (about $11.66 on a $185 value).",
+    "keyFacts": [
+      {
+        "fact": "The item is a 45-litre two-night travel bag (weekender) with a detachable shoulder strap. That makes it a 'traveling bag / travel bag' under heading 4202.",
+        "source": "listing"
+      },
+      {
+        "fact": "The body is 18 oz cotton canvas soaked in a paraffin-based wax. Leather (handles, base and trim) covers roughly 20% of the outside.",
+        "source": "listing"
+      },
+      {
+        "fact": "The main fabric is woven canvas, not a pile or tufted fabric. This matters because cotton pile or tufted bags fall in a 17.6% line.",
+        "source": "listing"
+      },
+      {
+        "fact": "The wax is paraffin with no plastic or polymer coating, so the outside counts as textile, not 'sheeting of plastics' (that line is 20%).",
+        "source": "assumption"
+      },
+      {
+        "fact": "The canvas is all or mainly cotton by weight, with no significant synthetic blend.",
+        "source": "assumption"
+      },
+      {
+        "fact": "Customs value is $185.00, quantity 1, country of origin United Kingdom (GB).",
+        "source": "listing"
+      },
+      {
+        "fact": "The brass hardware and cotton twill lining don't affect the code, because 4202 bags are classified by the material on the outer surface.",
+        "source": "listing"
+      }
+    ],
+    "candidates": [
+      {
+        "hts": "4202.92.15.00",
+        "role": "most_likely",
+        "likelihood": "high",
+        "reasoning": "Under GRI 1, the bag falls in heading 4202 as a traveling bag. Subheading 4202.92 covers bags whose outer surface is textile. Cotton canvas soaked in wax is still a textile material, and the subheading is decided by the outer surface. Here about 80% of that surface is waxed canvas, so the canvas gives the bag its essential character (GRI 3(b)) over the 20% leather trim. Under GRI 6, the line to use is 'Travel, sports and similar bags › With outer surface of textile materials › Of vegetable fibers and not of pile or tufted construction › Of cotton', at 6.3%.",
+        "decidingFact": "The outer surface is mostly (about 80%) woven cotton canvas, which counts as a textile."
+      },
+      {
+        "hts": "4202.91.90.30",
+        "role": "plausible_alternative",
+        "likelihood": "low",
+        "reasoning": "If an officer decided the bridle leather handles, base and trim give the bag its character, the bag would fall under 'outer surface of leather › Other › Travel, sports and similar bags', at 4.5%. This is unlikely at about 20% leather coverage. It is also cheaper than the main line, so it doesn't raise the amount to hold.",
+        "decidingFact": "Leather would have to cover most of the outside, or clearly be what makes the bag a bag. At about 20% it doesn't."
+      }
+    ],
+    "questionsForSeller": [
+      "Is the wax only paraffin or another natural wax, with no plastic or polymer (for example PU or PVC) coating in the finish? If the fabric were plastic-coated, customs could treat it as 'sheeting of plastics' at 20%.",
+      "Is the canvas 100% cotton, or does it contain synthetic fibres? A canvas that is mainly synthetic by weight would be dutiable at 17.6%.",
+      "Can you confirm that leather covers only about 20% of the outside surface, and that the canvas body isn't covered or overlaid with leather anywhere else?"
+    ],
+    "model": "claude-opus-5-5",
+    "classifiedAt": "2026-11-11T12:22:01.101Z"
+  }
+}

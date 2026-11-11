@@ -1,6 +1,6 @@
 import type { ListingInput } from "./classify";
 
-// Demo storefront: three small makers outside the US whose products sit on real classification fault lines.
+// Demo storefront: four small makers outside the US whose products sit on real classification fault lines.
 // Makers and products are fictional.
 
 export type Product = {
@@ -16,13 +16,13 @@ export type Product = {
 
 export const SHIPPING_EXPRESS = 28;
 
-export const PRODUCTS: Product[] = [
+const ALL: Product[] = [
   {
     id: "celadon-tea-set",
     maker: "Kiln Hoshino",
     place: "Arita, Saga",
     originName: "Japan",
-    tagline: "Is it porcelain or stoneware? Customs decides, and the duty swings from 0.7% to 26%.",
+    tagline: "Porcelain or stoneware, Japan's 12.5% floor makes the duty the same either way, so nothing extra is held.",
     accent: "#7FA79A",
     shipping: SHIPPING_EXPRESS,
     listing: {
@@ -38,11 +38,30 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
+    id: "jute-espadrilles",
+    maker: "Alpargatas Ebro",
+    place: "La Rioja",
+    originName: "Spain",
+    tagline: "One fact decides 37.5% or 10%: does the rubber tread weigh 10% of the shoe?",
+    accent: "#3F6E8C",
+    shipping: SHIPPING_EXPRESS,
+    listing: {
+      title: "Hand-stitched jute-sole espadrilles",
+      origin: "ES",
+      value: 79,
+      quantity: 1,
+      weightKg: 0.7,
+      materials:
+        "Upper: 100% cotton canvas. Sole: braided jute rope with a thin vulcanized rubber tread layer glued to the bottom (about 2 mm, covers most of the ground-contact area). Hand-stitched upper-to-sole seam. Women's, closed toe, slip-on.",
+      description: "Made by hand in our workshop in La Rioja, the traditional way: braided jute sole, sewn canvas upper.",
+    },
+  },
+  {
     id: "waxed-weekender",
     maker: "Harrow & Finch",
     place: "Leeds",
     originName: "United Kingdom",
-    tagline: "Waxed cotton or leather on the outside? The outer surface sets the duty.",
+    tagline: "Waxed cotton or leather outside: 16.3% or 14.5%. If customs reads it as leather, the buyer gets the difference back.",
     accent: "#8A6A3F",
     shipping: SHIPPING_EXPRESS,
     listing: {
@@ -62,7 +81,7 @@ export const PRODUCTS: Product[] = [
     maker: "Oficina Lume",
     place: "Porto",
     originName: "Portugal",
-    tagline: "A lighting fitting, an ornament, or an article of brass? Three readings, three rates.",
+    tagline: "A brass lighting fitting at 10%, or copper household ware under the 50% Section 232 duty? The hold covers both.",
     accent: "#B8913A",
     shipping: SHIPPING_EXPRESS,
     listing: {
@@ -77,5 +96,8 @@ export const PRODUCTS: Product[] = [
     },
   },
 ];
+
+const ORDER = ["brass-candle-holder", "jute-espadrilles", "waxed-weekender", "celadon-tea-set"];
+export const PRODUCTS: Product[] = ORDER.map((id) => ALL.find((p) => p.id === id)!).filter(Boolean);
 
 export const getProduct = (id: string) => PRODUCTS.find((p) => p.id === id);

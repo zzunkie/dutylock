@@ -71,19 +71,26 @@ export async function customsBillPdf(input: {
   text("Rate", 420, 9, bold);
   text("Duty", 500, 9, bold);
   y -= 16;
-  text(quote.listing.title.slice(0, 34), 48);
+  const titleLines = wrap(quote.listing.title, 36);
+  text(titleLines[0], 48);
   text(a.line.code, 250);
   text(money(quote.goods), 360);
   text(a.line.general || "Free", 420);
   text(money(a.mfn), 500);
-  y -= 16;
+  for (const extra of titleLines.slice(1)) {
+    y -= 12;
+    text(extra, 48);
+  }
+  y -= 18;
   for (const ad of a.additional) {
-    text(ad.label.slice(0, 60), 48, 9, font, grey);
-    text(money(ad.amount), 500);
-    y -= 14;
+    for (const [i, part] of wrap(`Additional duty: ${ad.label}`, 78).entries()) {
+      text(part, 48, 9, font, grey);
+      if (i === 0) text(money(ad.amount), 500);
+      y -= 13;
+    }
   }
   for (const f of a.fees) {
-    text(f.label.slice(0, 60), 48, 9, font, grey);
+    text(f.label, 48, 9, font, grey);
     text(money(f.amount), 500);
     y -= 14;
   }
@@ -98,6 +105,19 @@ export async function customsBillPdf(input: {
   text("Payable by the shipper under DDP terms. This invoice is a demonstration document for DutyLock.", 48, 8, font, grey);
 
   return { bytes: Buffer.from(await pdf.save()), assessment: a, entry };
+}
+
+function wrap(s: string, width: number) {
+  const out: string[] = [];
+  let line = "";
+  for (const word of s.split(" ")) {
+    if ((line + " " + word).trim().length > width && line) {
+      out.push(line);
+      line = word;
+    } else line = (line + " " + word).trim();
+  }
+  if (line) out.push(line);
+  return out;
 }
 
 function hash(s: string) {

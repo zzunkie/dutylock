@@ -24,7 +24,7 @@ function loadSdk(clientId: string) {
   if (window.paypal) return Promise.resolve();
   loader ??= new Promise((resolve, reject) => {
     const s = document.createElement("script");
-    s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId)}&currency=USD&intent=authorize&components=buttons&disable-funding=paylater,venmo`;
+    s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId)}&currency=USD&intent=authorize&components=buttons&disable-funding=paylater,venmo&locale=en_US`;
     s.onload = () => resolve();
     s.onerror = () => reject(new Error("PayPal SDK failed to load"));
     document.head.appendChild(s);

@@ -76,16 +76,16 @@ export const ORIGINS: Array<{ code: string; name: string }> = [
 export function additionalDutiesFor(origin: string, hts: string, mfnAve: number): AdditionalDuty[] {
   const code = hts.replace(/\D/g, "");
   if (COPPER_232.has(code.slice(0, 8))) {
-    return [{ label: "Section 232 copper duty (+50%)", rate: 0.5, source: SRC_232 }];
+    return [{ label: "Section 232 copper duty +50% (9903.82.02)", rate: 0.5, source: SRC_232 }];
   }
   const r = NOTE52[origin];
   if (!r) return [];
   if (r.kind === "add") {
-    return [{ label: `Section 301 duty, ${r.heading} (+${pct(r.rate)})`, rate: r.rate, source: SRC_301 }];
+    return [{ label: `Section 301 duty +${pct(r.rate)} (${r.heading})`, rate: r.rate, source: SRC_301 }];
   }
   const topUp = Math.max(0, r.rate - mfnAve);
   if (topUp <= 0) return [];
-  return [{ label: `Section 301 duty, ${r.heading} (total at least ${pct(r.rate)})`, rate: topUp, source: SRC_301 }];
+  return [{ label: `Section 301 top-up to the ${pct(r.rate)} minimum, +${pct(topUp)} (${r.heading})`, rate: topUp, source: SRC_301 }];
 }
 
 /** Merchandise processing fee for an automated informal entry (Entry Type 11), FY2027, from 2026-10-01. */

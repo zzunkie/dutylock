@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Quote } from "@/lib/quote";
 import type { ListingInput } from "@/lib/classify";
-import { formatHts, money, pct } from "@/lib/format";
+import { formatHts, money } from "@/lib/format";
 import { saveOrder } from "@/lib/local-orders";
 import { MoneyBar } from "./MoneyBar";
 import { PayPalButton } from "./PayPalButton";
@@ -166,7 +166,7 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
                         <div>{l.rateText || "Free"} general</div>
                         {l.additional.map((a) => (
                           <div key={a.label} className="text-muted">
-                            {a.label.replace(/\s*\(.*\)$/, "")} {pct(a.rate)}
+                            {a.label.replace(/\s*\([^)]*\)$/, "")}
                           </div>
                         ))}
                       </td>

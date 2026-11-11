@@ -25,7 +25,11 @@ export const BillSchema = z.object({
   fees: z.array(z.object({ label: z.string(), amount: z.number() })),
   total_due: z.number(),
   payer: z.string().describe("Who the bill is addressed to / who pays"),
-  reader_notes: z.string().describe("Anything unclear or inconsistent on the document; empty if none"),
+  reader_notes: z
+    .string()
+    .describe(
+      "Only problems with the document itself: illegible or missing fields, numbers that do not add up, signs of editing. Do not judge whether a duty legally applies. Empty if none.",
+    ),
 });
 
 export type Bill = z.infer<typeof BillSchema>;
@@ -54,7 +58,7 @@ export async function readBill(file: { bytes: Buffer; mediaType: string }): Prom
           source,
           {
             type: "text",
-            text: "Transcribe this import duties bill. Copy numbers exactly as printed; do not compute or correct anything. If a value is missing, use an empty string or 0 and say so in reader_notes.",
+            text: "Transcribe this import duties bill. Copy numbers exactly as printed; do not compute or correct anything. If a value is missing, use an empty string or 0 and say so in reader_notes. US duty programs change often, so do not comment on whether a listed duty should apply; code checks the amounts against the order.",
           },
         ],
       },

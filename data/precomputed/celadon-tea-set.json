@@ -1,0 +1,65 @@
+{
+  "steps": [
+    "Reading the listing",
+    "Read every line under 6911.10",
+    "Checked 6911.10.37.10",
+    "Checked 6911.10.58.00",
+    "Checked 6911.10.80.10",
+    "Checked 6911.10.25.00",
+    "Read every line under 6912.00",
+    "Checked 6912.00.45.00",
+    "Checked 6911.10.52.00"
+  ],
+  "classification": {
+    "summary": "This is a 5-piece set of household tea ware (teapot with lid, two cups, two saucers). The body is white, high-fired and slightly see-through at the thin rims, which points to porcelain. That puts it in heading 6911 (porcelain or china tableware). It isn't a large dinnerware service, so it falls under the \"other\" lines that depend on value per dozen. At $168, each piece is above the top value thresholds, so the 6% line is most likely.",
+    "keyFacts": [
+      {
+        "fact": "The set has 5 pieces: a 600 ml teapot with lid, two teacups and two saucers, sold only as a set",
+        "source": "listing"
+      },
+      {
+        "fact": "The clay is fired at about 1,280°C. The body is white and slightly see-through at the thin rims, and the unglazed foot shows a fine, dense grain. Being see-through is the main sign of porcelain under Chapter 69.",
+        "source": "listing"
+      },
+      {
+        "fact": "It's for everyday use at home (household ware, not hotel or restaurant ware) and is food safe",
+        "source": "listing"
+      },
+      {
+        "fact": "Customs value is $168 for the whole set",
+        "source": "listing"
+      },
+      {
+        "fact": "I assumed the $168 splits across the pieces so the teapot is worth well over $15 (over $180 a dozen) and each cup and saucer is over about $2.42 and $1.56 (over $29 and $18.75 a dozen). Every piece then falls in the top value bracket.",
+        "source": "assumption"
+      },
+      {
+        "fact": "I assumed the pattern is not also sold as a full dinner service (plates, soups and so on), so the 'available in specified sets' lines (Chapter 69 additional U.S. note 6) don't apply",
+        "source": "assumption"
+      }
+    ],
+    "candidates": [
+      {
+        "hts": "6911.10.58.00",
+        "role": "most_likely",
+        "likelihood": "high",
+        "reasoning": "Under GRI 1, heading 6911 covers household tableware of porcelain or china. A white, high-fired body that is see-through at thin edges is the standard sign of porcelain. The set is household ware, and its pattern isn't sold as a 'specified set' dinner service, so it goes to the 'Other' lines that depend on value per dozen. Under GRI 3(b) and GRI 6, the teapot is a beverage server and the cups and saucers are named in the same line. At a $168 set value, each piece is above the top thresholds (cups over $29 a dozen, saucers over $18.75 a dozen, beverage servers over $180 a dozen). That makes the whole set dutiable at 6%.",
+        "decidingFact": "The white body that lets light through at the thin rims, which shows it is porcelain"
+      },
+      {
+        "hts": "6912.00.45.00",
+        "role": "plausible_alternative",
+        "likelihood": "low",
+        "reasoning": "A celadon piece fired around 1,280°C could be read as fine-grained stoneware rather than porcelain if the body turned out to be grey-white or not truly see-through. It would then fall under heading 6912 (ceramic tableware other than porcelain), household ware, 'Other'. Cups, saucers and beverage servers above the value limits in this line are dutiable at 4.5%. This would lower the duty, not raise it.",
+        "decidingFact": "If a customs lab found the body is stoneware (not see-through, more porous) rather than porcelain"
+      }
+    ],
+    "questionsForSeller": [
+      "If you hold a thin rim or cup wall up to a bright light, can you clearly see light through it? (This confirms porcelain rather than stoneware.)",
+      "Roughly how is the $168 split between the teapot, the cups and the saucers? If the teapot alone were worth $15 or less, it would fall in a lower value bracket at 8% (6911.10.52.00).",
+      "Do you also sell this celadon pattern as a full dinner service with plates, bowls and platters, or only as this tea set?"
+    ],
+    "model": "claude-opus-5-5",
+    "classifiedAt": "2026-11-11T12:22:05.008Z"
+  }
+}

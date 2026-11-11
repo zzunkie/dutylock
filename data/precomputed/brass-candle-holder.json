@@ -1,0 +1,59 @@
+{
+  "steps": [
+    "Reading the listing",
+    "Read every line under 9405.50",
+    "Searched the tariff schedule for “candlesticks brass copper”",
+    "Checked 9405.50.30.00",
+    "Read every line under 7418.10",
+    "Read every line under 8306.29",
+    "Checked 7418.10.00.25",
+    "Checked 7418.10.00.55",
+    "Checked 8306.29.00.00"
+  ],
+  "classification": {
+    "summary": "This is a non-electric candlestick made of solid brass. For US customs it is a non-electrical lighting fitting under heading 9405, which names \"candlesticks\" in its scope, and it falls under the specific line for brass ones.",
+    "keyFacts": [
+      {
+        "fact": "Made of solid brass (copper-zinc alloy), hand-hammered, with a clear lacquer finish",
+        "source": "listing"
+      },
+      {
+        "fact": "Holds one taper candle and has no electrical parts, so it is a non-electric candleholder",
+        "source": "listing"
+      },
+      {
+        "fact": "Customs value is $64.00 for 1 unit, weighing 0.6 kg shipped",
+        "source": "listing"
+      },
+      {
+        "fact": "Country of origin is Portugal, so the general (MFN) duty rate applies",
+        "source": "listing"
+      },
+      {
+        "fact": "Brass is the only material in the item. There are no glass, ceramic or other parts that would change its material.",
+        "source": "assumption"
+      }
+    ],
+    "candidates": [
+      {
+        "hts": "9405.50.30.00",
+        "role": "most_likely",
+        "likelihood": "high",
+        "reasoning": "Under GRI 1, heading 9405 covers lamps and lighting fittings not elsewhere specified, and non-electrical lighting fittings include candlesticks and candleholders. Customs consistently classifies candleholders here. Section XV (base metals) does not cover articles of Chapter 94, so this heading takes priority over the brass headings. Within 9405.50 (non-electrical), under 'Other', there is a specific line 'Of brass', which fits this solid brass item. Duty is 5.7%, about $3.65 on $64.",
+        "decidingFact": "It is a non-electric candleholder made of brass"
+      },
+      {
+        "hts": "7418.10.00.25",
+        "role": "plausible_alternative",
+        "likelihood": "low",
+        "reasoning": "A customs officer could treat it as a brass household or table article ('table piece for dinner') under heading 7418, brass, 'other' (not cookware). This is unlikely, because candleholders are named in the lighting heading 9405 and Chapter 94 articles are excluded from the base-metal section. Duty is 3%, about $1.92, which is lower than the most likely line.",
+        "decidingFact": "Only if customs treated it as general brass tableware rather than a lighting fitting"
+      }
+    ],
+    "questionsForSeller": [
+      "Is the candle holder made entirely of brass, including the base weight and any candle cup or insert? Or are any parts made of iron, glass or another material?"
+    ],
+    "model": "claude-opus-5-5",
+    "classifiedAt": "2026-11-11T12:21:14.040Z"
+  }
+}
