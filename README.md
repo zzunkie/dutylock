@@ -55,10 +55,10 @@ Guardrails live in code: every code the model submits must exist in the schedule
 
 ## Try it
 
-**Hosted demo:** _URL added at deployment_
+**Hosted demo:** https://dutylock.vercel.app (PayPal sandbox; no real money moves)
 
-1. Open **Demo shop**, pick a product. The duty estimate appears (the three catalog products replay a saved classification run instantly; "Run the classification live" re-runs Claude).
-2. Pay with the PayPal sandbox buyer account (credentials are in the Devpost submission's testing instructions), or choose "Debit or Credit Card" and use a [PayPal sandbox test card](https://developer.paypal.com/tools/sandbox/card-testing/).
+1. Open **Demo shop**, pick a product. The duty estimate appears (the catalog products replay a saved classification run; "Run the classification live" re-runs Claude, about 30 seconds).
+2. Pay with **Debit or Credit Card** in the PayPal button using the sandbox test card `4111 1111 1111 1111`, any future expiry, any 3-digit CSC, and any US address. No PayPal login is needed. (Other [sandbox test cards](https://developer.paypal.com/tools/sandbox/card-testing/) work too.)
 3. On the order page, open **Seller console**: ship, choose the tariff line customs applies, generate the courier's duties invoice, let Claude read it, approve the capture.
 4. **Classify your product** runs Claude live on any listing you type.
 
