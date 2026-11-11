@@ -40,7 +40,8 @@ function cleanListing(raw: Partial<ListingInput>): ListingInput | string {
 }
 
 export async function POST(req: Request) {
-  const body = (await req.json().catch(() => ({}))) as { productId?: string; listing?: Partial<ListingInput>; live?: boolean };
+  const body = (await req.json().catch(() => ({}))) as { productId?: string; listing?: Partial<ListingInput>; live?: boolean; pace?: string };
+  const replayDelay = body.pace === "slow" ? 900 : 180;
   const product = body.productId ? getProduct(body.productId) : undefined;
   const listingOrError = product ? product.listing : cleanListing(body.listing ?? {});
   if (typeof listingOrError === "string") return Response.json({ error: listingOrError }, { status: 400 });
@@ -64,7 +65,7 @@ export async function POST(req: Request) {
         if (saved) {
           for (const label of saved.steps) {
             send({ type: "step", label } satisfies AgentEvent);
-            await new Promise((r) => setTimeout(r, 180));
+            await new Promise((r) => setTimeout(r, replayDelay));
           }
           finish(saved.classification, true);
         } else {

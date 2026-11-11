@@ -33,7 +33,12 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
         const res = await fetch("/api/quote", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ productId, listing, live }),
+          body: JSON.stringify({
+            productId,
+            listing,
+            live,
+            pace: typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("pace") ?? undefined : undefined,
+          }),
         });
         if (!res.ok || !res.body) {
           const j = await res.json().catch(() => ({}));
