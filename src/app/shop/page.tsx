@@ -10,8 +10,8 @@ export default function Shop() {
     <div className="mx-auto max-w-6xl px-5 py-12">
       <h1 className="text-3xl font-semibold tracking-tight">Four makers, four classification questions</h1>
       <p className="mt-3 max-w-2xl text-muted">
-        Each product ships from outside the US to a US buyer. Open one to watch the duty estimate, then pay with a PayPal sandbox
-        buyer account.
+        Each product ships from outside the US to a US buyer. Open one to watch the duty estimate, then pay with the PayPal
+        sandbox test card 4111 1111 1111 1111 (any future expiry and CSC).
       </p>
       <ul className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         {PRODUCTS.map((p) => (
