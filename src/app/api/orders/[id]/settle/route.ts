@@ -82,7 +82,6 @@ function check(bill: Bill, quote: Quote, tracking: string | undefined): Check[] 
       text: `Assessed $${bill.total_due.toFixed(2)} is above the $${quote.holdDuties.toFixed(2)} hold. We capture the hold; the seller covers $${(bill.total_due - quote.holdDuties).toFixed(2)}.`,
     });
   }
-  if (bill.reader_notes) checks.push({ ok: true, level: "warn", text: `Reader note: ${bill.reader_notes}` });
   return checks;
 }
 

@@ -76,7 +76,7 @@ export default function OrderPage(props: { params: Promise<{ id: string }> }) {
         <Step done title={`Hold placed on your PayPal: ${money(authorized)}`}>
           {auth?.expiration_time && <>The authorization is valid until {new Date(auth.expiration_time).toUTCString().slice(5, 16)}. Nothing beyond the final amount will be charged.</>}
         </Step>
-        <Step done={Boolean(data.shipment) || settled} title={data.shipment ? `Shipped with ${data.shipment.carrier}, ${data.shipment.tracking}` : "Waiting for the seller to ship"} />
+        <Step done={Boolean(data.shipment) || settled} title={data.shipment ? `Shipped${data.shipment.carrier ? ` with ${data.shipment.carrier}` : ""}, tracking ${data.shipment.tracking}` : settled ? "Shipped" : "Waiting for the seller to ship"} />
         <Step done={settled} title={settled ? `US customs assessed ${money(assessedDuties ?? 0)} in duties and fees` : "Waiting for US customs"} />
         <Step done={settled} title={settled ? `Charged ${money(captured)} · ${money(released)} released` : "Final charge after clearance"}>
           {settled && released > 0 && <>The released amount drops off your PayPal balance or card statement; nothing else is owed.</>}

@@ -238,13 +238,14 @@ function OrderSettlement({ order }: { order: LocalOrder }) {
         </button>
         {read && (
           <div className="rise mt-5 space-y-4 text-sm">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">Read from the bill by Claude</h4>
             <table className="w-full">
               <tbody>
                 <BillRow k="Carrier" v={read.bill.carrier} />
                 <BillRow k="Air waybill" v={read.bill.tracking_number} mono />
                 <BillRow k="CBP entry" v={read.bill.entry_number} mono />
                 {read.bill.lines.map((l, i) => (
-                  <BillRow key={i} k={`Duty on ${l.hts}`} v={money(l.duty)} mono />
+                  <BillRow key={i} k={`Duty on ${l.hts}`} v={money(l.duty)} />
                 ))}
                 {read.bill.additional_duties.map((a, i) => (
                   <BillRow key={`a${i}`} k={a.label} v={money(a.amount)} />
@@ -255,14 +256,29 @@ function OrderSettlement({ order }: { order: LocalOrder }) {
                 <BillRow k="Total due" v={money(read.bill.total_due)} strong />
               </tbody>
             </table>
-            <ul className="space-y-1.5">
-              {read.checks.map((c, i) => (
-                <li key={i} className={`flex gap-2 ${c.level === "block" ? "text-danger" : c.level === "warn" ? "text-hold" : "text-muted"}`}>
-                  <span aria-hidden>{c.level === "block" ? "✕" : c.level === "warn" ? "!" : "✓"}</span>
-                  <span>{c.text}</span>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">Checked in code before anything is charged</h4>
+              <ul className="mt-2 space-y-2">
+                {read.checks.map((c, i) => (
+                  <li key={i} className={`flex gap-2.5 ${c.level === "block" ? "text-danger" : c.level === "warn" ? "text-hold" : "text-ink"}`}>
+                    <span
+                      aria-hidden
+                      className={`mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white ${
+                        c.level === "block" ? "bg-danger" : c.level === "warn" ? "bg-hold" : "bg-release"
+                      }`}
+                    >
+                      {c.level === "block" ? "✕" : c.level === "warn" ? "!" : "✓"}
+                    </span>
+                    <span>{c.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {read.bill.reader_notes && (
+              <p className="text-[13px] leading-relaxed text-muted">
+                <span className="font-medium">Note from the reader:</span> {read.bill.reader_notes}
+              </p>
+            )}
           </div>
         )}
       </Stage>

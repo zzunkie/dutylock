@@ -129,16 +129,16 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
       {quote && token && (
         <div className="rise space-y-6">
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">What customs could charge</h3>
-            <p className="mt-2 text-[15px] leading-relaxed">{quote.classification.summary}</p>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">What customs could charge</h3>
+            <p className="mt-2 text-base leading-relaxed">{quote.classification.summary}</p>
           </div>
 
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-line text-left text-xs text-muted">
-                <th className="py-2 pr-3 font-normal">Tariff line</th>
-                <th className="py-2 pr-3 font-normal">Duty rate</th>
-                <th className="py-2 text-right font-normal">Duty</th>
+              <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-muted">
+                <th className="py-2 pr-3 font-medium">Tariff line customs could apply</th>
+                <th className="py-2 pr-3 font-medium">Rate</th>
+                <th className="py-2 text-right font-medium">Duty</th>
               </tr>
             </thead>
             <tbody>
@@ -146,36 +146,38 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
                 .sort((a, b) => (a.role === "most_likely" ? -1 : b.role === "most_likely" ? 1 : b.duty - a.duty))
                 .map((l) => {
                   const cand = quote.classification.candidates.find((c) => formatHts(c.hts) === formatHts(l.hts));
-                  const isMax = l.duty === quote.maxDuty;
+                  const isMax = l.duty === quote.maxDuty && quote.maxDuty > quote.expectedDuty;
+                  const likely = l.role === "most_likely";
                   return (
                     <tr key={l.hts} className="border-b border-line align-top">
-                      <td className="py-3 pr-3">
-                        <div className="font-mono text-[13px]">
-                          {formatHts(l.hts)}
-                          <span className={`ml-2 font-sans text-xs ${l.role === "most_likely" ? "text-release" : "text-muted"}`}>
-                            {l.role === "most_likely" ? "most likely" : `alternative, ${l.likelihood}`}
+                      <td className={`py-4 pr-3 pl-3 ${likely ? "border-l-[3px] border-release" : "border-l-[3px] border-transparent"}`}>
+                        <div className="flex flex-wrap items-baseline gap-x-2">
+                          <span className="font-mono text-[15px] font-medium">{formatHts(l.hts)}</span>
+                          <span className={`text-xs font-medium ${likely ? "text-release" : "text-muted"}`}>
+                            {likely ? "Most likely" : `Alternative · ${l.likelihood} likelihood`}
                           </span>
                         </div>
-                        <div className="mt-1 text-xs leading-relaxed text-muted">{shortDescription(l.description)}</div>
+                        <div className="mt-1 text-[13px] leading-relaxed text-muted">{shortDescription(l.description)}</div>
                         {cand && (
-                          <details className="mt-1 text-xs text-muted">
-                            <summary className="cursor-pointer select-none text-ink">Why customs could pick this</summary>
+                          <details className="mt-1.5 text-[13px] text-muted">
+                            <summary className="cursor-pointer select-none font-medium text-ink">Why customs could pick this</summary>
                             <p className="mt-1 leading-relaxed">{cand.reasoning}</p>
                             <p className="mt-1 leading-relaxed">
-                              <span className="text-ink">Deciding fact:</span> {cand.decidingFact}
+                              <span className="font-medium text-ink">Deciding fact:</span> {cand.decidingFact}
                             </p>
                           </details>
                         )}
                       </td>
-                      <td className="py-3 pr-3 text-xs leading-relaxed">
-                        <div>{l.rateText || "Free"} general</div>
+                      <td className="py-4 pr-3 text-[13px] leading-relaxed">
+                        <div className="tabular text-[15px] font-semibold text-ink">{percent(l.duty, quote.goods)}</div>
+                        <div className="text-muted">{l.rateText || "Free"} general</div>
                         {l.additional.map((a) => (
                           <div key={a.label} className="text-muted">
                             {a.label.replace(/\s*\([^)]*\)$/, "")}
                           </div>
                         ))}
                       </td>
-                      <td className={`tabular py-3 text-right ${isMax ? "font-semibold text-hold" : ""}`}>{money(l.duty)}</td>
+                      <td className={`tabular py-4 text-right text-[15px] font-semibold ${isMax ? "text-hold" : ""}`}>{money(l.duty)}</td>
                     </tr>
                   );
                 })}
@@ -190,7 +192,7 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
             ))}
             <Row label="US duties, most likely" value={quote.expectedDuty} />
             <Row label="US duties, highest plausible" value={quote.maxDuty} tone="hold" />
-            <div className="border-t border-line pt-2">
+            <div className="mt-1 border-t border-ink pt-3 text-lg">
               <Row label="Held on your PayPal today" value={quote.holdTotal} strong />
             </div>
           </dl>
@@ -245,6 +247,13 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
       )}
     </section>
   );
+}
+
+/** Effective rate of a line: all duties on it as a share of the goods value. */
+function percent(duty: number, goods: number) {
+  if (!goods) return "";
+  const p = (duty / goods) * 100;
+  return `${p >= 10 ? p.toFixed(p % 1 < 0.05 || p % 1 > 0.95 ? 0 : 1) : p.toFixed(1)}%`;
 }
 
 function shortDescription(path: string) {

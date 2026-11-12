@@ -4,7 +4,7 @@
   --bg: #ffffff;
   --surface: #f5f6f8;
   --ink: #0e1420;
-  --muted: #5a6372;
+  --muted: #4f5868;
   --line: #e3e6ec;
   --hold: #b26b00;
   --hold-soft: #fff4e2;
@@ -13,6 +13,14 @@
   --release-soft: #e6f5ee;
   --accent: #2a4dd0;
   --danger: #b42318;
+}
+
+/* Slightly larger small text: the app is read on laptops and in demo videos. */
+@theme {
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.55;
 }
 
 @theme inline {

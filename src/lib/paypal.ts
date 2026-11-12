@@ -87,7 +87,7 @@ export type PayPalOrder = {
     description?: string;
     amount: Money & { breakdown?: Record<string, Money> };
     items?: OrderItem[];
-    shipping?: { name?: { full_name?: string }; address?: Record<string, string> };
+    shipping?: { name?: { full_name?: string }; address?: Record<string, string>; trackers?: Array<{ id: string; status: string }> };
     payments?: {
       authorizations?: Authorization[];
       captures?: Capture[];
