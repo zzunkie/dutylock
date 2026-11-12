@@ -109,17 +109,23 @@ export function QuotePanel({ productId, listing, autoStart = true }: Props) {
     <section aria-label="US duties at checkout" className="space-y-6">
       {(running || steps.length > 0) && !quote && (
         <div>
-          <p className="text-sm font-medium">
+          <p className="font-medium">
             {running ? "Claude is reading the US tariff schedule for this product…" : "Classification stopped."}
           </p>
-          <ol className="mt-3 space-y-1.5 text-sm text-muted">
+          <p className="mt-0.5 text-[13px] text-muted">Claude searches, browses and looks up lines in USITC HTSUS 2026 Revision 23 through tools.</p>
+          <ol className="mt-4 space-y-2.5 border-l-2 border-line pl-5 text-sm">
             {steps.map((s, i) => (
-              <li key={i} className="rise flex gap-2">
-                <span className="tabular w-5 text-right text-xs leading-5 text-line">{i + 1}</span>
-                <span>{s}</span>
+              <li key={i} className="rise relative">
+                <span className="absolute -left-[27px] top-[6px] h-2.5 w-2.5 rounded-full border-2 border-white bg-release" />
+                {s}
               </li>
             ))}
-            {running && <li className="ml-7 animate-pulse text-xs">working</li>}
+            {running && (
+              <li className="relative text-muted">
+                <span className="absolute -left-[27px] top-[6px] h-2.5 w-2.5 animate-pulse rounded-full border-2 border-white bg-hold" />
+                Working…
+              </li>
+            )}
           </ol>
         </div>
       )}

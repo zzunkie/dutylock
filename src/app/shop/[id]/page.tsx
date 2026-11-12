@@ -20,7 +20,7 @@ export default async function ProductPage(props: PageProps<"/shop/[id]">) {
         <p className="mt-1 text-sm text-muted">
           {p.maker} · {p.place}, {p.originName} · ships to the US by express courier
         </p>
-        <p className="tabular mt-4 text-xl">{money(p.listing.value)}</p>
+        <p className="tabular mt-4 text-2xl font-semibold">{money(p.listing.value)}</p>
         <dl className="mt-6 space-y-4 text-sm leading-relaxed">
           <div>
             <dt className="text-muted">Materials and construction</dt>
